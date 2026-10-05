@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Viamatica.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6b29b77629ef842dac7c06ff05e724b7f246dc0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3479eb85616d663b3e2439d8c4e307ffe546a357")]
 [assembly: System.Reflection.AssemblyProductAttribute("Viamatica.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Viamatica.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

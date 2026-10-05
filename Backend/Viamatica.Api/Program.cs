@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Viamatica.Infrastructure.Persistence;
+using Viamatica.Application.Interfaces;
+using Viamatica.Infrastructure.Services;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,17 +13,17 @@ builder.Services.AddDbContext<ViamaticaDbContext>(options =>
 // Controllers
 builder.Services.AddControllers();
 
-// Swagger
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// OpenApi
+builder.Services.AddOpenApi(); 
+
+builder.Services.AddScoped<IRolService, RolService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();
