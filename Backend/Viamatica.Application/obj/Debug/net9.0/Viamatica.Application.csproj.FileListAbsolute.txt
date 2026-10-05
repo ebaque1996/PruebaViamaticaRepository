@@ -1,0 +1,16 @@
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\bin\Debug\net9.0\Viamatica.Application.deps.json
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\bin\Debug\net9.0\Viamatica.Application.dll
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\bin\Debug\net9.0\Viamatica.Application.pdb
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\bin\Debug\net9.0\Viamatica.Domain.dll
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\bin\Debug\net9.0\Viamatica.Domain.pdb
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\Viamatica.Application.csproj.AssemblyReference.cache
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\Viamatica.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\Viamatica.Application.AssemblyInfoInputs.cache
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\Viamatica.Application.AssemblyInfo.cs
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\Viamatica.Application.csproj.CoreCompileInputs.cache
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\Viamatica.Application.sourcelink.json
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\Viamatic.6F849AEA.Up2Date
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\Viamatica.Application.dll
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\refint\Viamatica.Application.dll
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\Viamatica.Application.pdb
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Application\obj\Debug\net9.0\ref\Viamatica.Application.dll
