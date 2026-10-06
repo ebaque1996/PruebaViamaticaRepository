@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "pza6BNu2cAc=",
+  "dgSpecHash": "c1fjdMaRAEw=",
   "success": true,
   "projectFilePath": "C:\\Users\\EBAQUE1996\\Desktop\\PruebaViamatica\\Backend\\Viamatica.Api\\Viamatica.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\EBAQUE1996\\.nuget\\packages\\aspnetcore.scalar\\1.2.0\\aspnetcore.scalar.1.2.0.nupkg.sha512",
     "C:\\Users\\EBAQUE1996\\.nuget\\packages\\azure.core\\1.41.0\\azure.core.1.41.0.nupkg.sha512",
     "C:\\Users\\EBAQUE1996\\.nuget\\packages\\azure.identity\\1.12.1\\azure.identity.1.12.1.nupkg.sha512",
+    "C:\\Users\\EBAQUE1996\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\EBAQUE1996\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\EBAQUE1996\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.5\\microsoft.aspnetcore.openapi.9.0.5.nupkg.sha512",
     "C:\\Users\\EBAQUE1996\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
