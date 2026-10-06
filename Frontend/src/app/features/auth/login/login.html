@@ -1,1 +1,72 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>Sistema Viamatica</h2>
+      <p>Ingresa tus credenciales para acceder</p>
+    </div>
+
+    @if (errorMessage()) {
+      <div class="alert alert-danger">
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-group">
+        <label for="emailOrUsername">Usuario o Correo Electrónico</label>
+        <input
+          type="text"
+          id="emailOrUsername"
+          formControlName="emailOrUsername"
+          placeholder="Ej. admin / usuario@viamatica.com"
+          [class.is-invalid]="f['emailOrUsername'].touched && f['emailOrUsername'].invalid"
+        />
+        @if (f['emailOrUsername'].touched && f['emailOrUsername'].invalid) {
+          <div class="error-feedback">
+            @if (f['emailOrUsername'].errors?.['required']) {
+              El usuario o correo es obligatorio.
+            }
+            @if (f['emailOrUsername'].errors?.['minlength']) {
+              Debe ingresar al menos 3 caracteres.
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="passwordHash">Contraseña</label>
+        <input
+          type="password"
+          id="passwordHash"
+          formControlName="passwordHash"
+          placeholder="••••••••"
+          [class.is-invalid]="f['passwordHash'].touched && f['passwordHash'].invalid"
+        />
+        @if (f['passwordHash'].touched && f['passwordHash'].invalid) {
+          <div class="error-feedback">
+            @if (f['passwordHash'].errors?.['required']) {
+              La contraseña es obligatoria.
+            }
+            @if (f['passwordHash'].errors?.['minlength']) {
+              Debe tener al menos 4 caracteres.
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-extra">
+        <a [routerLink]="['/auth/recover']" class="link-recover">
+          ¿Olvidaste tu contraseña?
+        </a>
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="loading()">
+        @if (loading()) {
+          <span class="spinner"></span> Procesando...
+        } @else {
+          Iniciar Sesión
+        }
+      </button>
+    </form>
+  </div>
+</div>

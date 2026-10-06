@@ -8,7 +8,7 @@ import { LoginRequest, LoginResponse, User, MenuItem, RecoverPasswordRequest } f
   providedIn: 'root'
 })
 export class Auth {
-  private readonly API_URL = 'https://localhost:7187/api'; // Ajusta la URL/Puerto de tu backend ASP.NET Core
+  private readonly API_URL = 'http://localhost:5298/api'; // Ajusta la URL/Puerto de tu backend ASP.NET Core
 
   // Signals para el estado global de autenticación
   currentUser = signal<User | null>(this.getUserFromStorage());
@@ -24,7 +24,7 @@ export class Auth {
   ) {}
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.API_URL}/auth/login`, credentials).pipe(
+    return this.http.post<LoginResponse>(`${this.API_URL}/Auth/login`, credentials).pipe(
       tap((response) => {
         // Guardar sesión en LocalStorage
         localStorage.setItem('jwt_token', response.token);
