@@ -26,14 +26,17 @@ export class Auth {
   login(credentials: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.API_URL}/Auth/login`, credentials).pipe(
       tap((response) => {
-        // Guardar sesión en LocalStorage
+        // 1. Formatear el menú recibido del backend (mapear íconos y labels)
+        const formattedMenu = this.formatMenu(response.menu);
+
+        // 2. Guardar sesión en LocalStorage
         localStorage.setItem('jwt_token', response.token);
         localStorage.setItem('auth_user', JSON.stringify(response.user));
-        localStorage.setItem('auth_menu', JSON.stringify(response.menu));
+        localStorage.setItem('auth_menu', JSON.stringify(formattedMenu));
 
-        // Actualizar Signals
+        // 3. Actualizar Signals
         this.currentUser.set(response.user);
-        this.currentMenu.set(response.menu);
+        this.currentMenu.set(formattedMenu); // Guardamos el menú ya formateado
       })
     );
   }
@@ -68,5 +71,36 @@ export class Auth {
   private getMenuFromStorage(): MenuItem[] {
     const menuJson = localStorage.getItem('auth_menu');
     return menuJson ? JSON.parse(menuJson) : [];
+  }
+
+  // --- MÉTODOS PRIVADOS PARA EL FORMATEO DEL MENÚ ---
+
+  private formatMenu(menu: MenuItem[]): MenuItem[] {
+    if (!menu) return [];
+
+    return menu.map(item => ({
+      ...item,
+      // Adaptamos "title" (que viene del backend) a "label" (que usa tu HTML)
+      label: item.title /*|| item.label*/,
+      icon: this.mapIcon(item.icon ?? ""),
+      children: item.children?.map(child => ({
+        ...child,
+        label: child.title /*|| child.label*/,
+        icon: this.mapIcon(child.icon ?? "")
+      }))
+    }));
+  }
+
+  private mapIcon(iconName: string): string {
+    const iconMap: Record<string, string> = {
+      'home': 'bi-house-door',
+      'dashboard': 'bi-speedometer2',
+      'people': 'bi-people-fill',
+      'assignment': 'bi-card-checklist',
+      'person': 'bi-person-fill',
+      'point_of_sale': 'bi-cash-coin'
+    };
+    // Si no encuentra el ícono en el diccionario, pone un círculo por defecto
+    return iconMap[iconName?.toLowerCase()] || 'bi-circle';
   }
 }

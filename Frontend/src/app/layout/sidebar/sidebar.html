@@ -1,1 +1,52 @@
-<p>sidebar works!</p>
+<aside class="sidebar-container bg-dark text-white p-3">
+  <div class="sidebar-header border-bottom pb-3 mb-3">
+    <h5 class="m-0 fw-bold"><i class="bi bi-bank me-2"></i>Sistema Turnos</h5>
+  </div>
+
+  <ul class="nav nav-pills flex-column mb-auto">
+    @for (item of menuItems(); track item.id) {
+      @if (item.children && item.children.length > 0) {
+        <!-- Submenú -->
+        <li class="nav-item my-1">
+          <a class="nav-link text-white d-flex align-items-center justify-content-between"
+             data-bs-toggle="collapse"
+             [href]="'#submenu-' + item.id"
+             role="button">
+            <span>
+              <i [class]="item.icon + ' me-2'"></i>
+              <!-- {{ item.title || item.label }} -->
+                {{ item.title }}
+            </span>
+            <i class="bi bi-chevron-down ms-auto fs-7"></i>
+          </a>
+          <div class="collapse ms-3 mt-1" [id]="'submenu-' + item.id">
+            <ul class="nav flex-column">
+              @for (child of item.children; track child.route) {
+                <li class="nav-item">
+                  <a class="nav-link text-white-50"
+                     [routerLink]="child.route"
+                     routerLinkActive="active text-white bg-primary">
+                    <i [class]="child.icon + ' me-2'"></i>
+                    <!--{{ child.title || child.label }}-->
+                    {{ child.title }}
+                  </a>
+                </li>
+              }
+            </ul>
+          </div>
+        </li>
+      } @else {
+        <!-- Opción simple -->
+        <li class="nav-item my-1">
+          <a class="nav-link text-white d-flex align-items-center"
+             [routerLink]="item.route"
+             routerLinkActive="active bg-primary">
+            <i [class]="item.icon + ' me-2'"></i>
+            <!-- {{ item.title || item.label }} -->
+            {{ item.title }}
+          </a>
+        </li>
+      }
+    }
+  </ul>
+</aside>

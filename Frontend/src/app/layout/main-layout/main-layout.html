@@ -1,1 +1,14 @@
-<p>main-layout works!</p>
+<div class="d-flex vh-100">
+  <!-- Sidebar dinámico por Rol -->
+  <app-sidebar class="h-100"></app-sidebar>
+
+  <!-- Área de contenido principal -->
+  <div class="d-flex flex-column flex-grow-1 overflow-auto">
+    <app-navbar></app-navbar>
+
+    <main class="p-4 flex-grow-1 bg-light">
+      <!-- Carga modular con Lazy Loading -->
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

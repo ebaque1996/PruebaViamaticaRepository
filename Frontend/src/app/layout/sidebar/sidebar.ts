@@ -1,9 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Auth } from '../../core/services/auth'; // Tu servicio actual
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.html',
-  styleUrl: './sidebar.scss',
+  styleUrls: ['./sidebar.scss']
 })
-export class Sidebar {}
+export class SidebarComponent {
+  private authService = inject(Auth);
+
+  // Pasamos la Signal a la vista
+  menuItems = this.authService.currentMenu;
+}
