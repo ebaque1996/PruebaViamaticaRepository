@@ -29,3 +29,15 @@ public class LoginResponseDto
     public UserAuthDto User { get; set; } = null!;
     public List<MenuItemDto> Menu { get; set; } = new();
 }
+
+public class RecoverPasswordRequestDto
+{
+    public string EmailOrIdentification { get; set; } = null!;
+    public string? NewPassword { get; set; } // Opcional: si viene nulo, genera una clave temporal
+}
+
+public class RecoverPasswordResponseDto
+{
+    public string Message { get; set; } = null!;
+    public string? TemporaryPassword { get; set; } // Útil para pruebas en desarrollo
+}

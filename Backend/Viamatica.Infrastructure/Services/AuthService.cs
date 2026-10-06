@@ -125,6 +125,42 @@ public class AuthService : IAuthService
         return menu;
     }
 
+    public async Task<RecoverPasswordResponseDto> RecoverPasswordAsync(RecoverPasswordRequestDto request)
+    {
+        if (string.IsNullOrWhiteSpace(request.EmailOrIdentification))
+            throw new Exception("Debe ingresar un correo electrónico o cédula de ciudadanía.");
+
+        // Codificamos la entrada a Base64 para comparar con Email e Identification almacenados
+        var encodedInput = Convert.ToBase64String(Encoding.UTF8.GetBytes(request.EmailOrIdentification.Trim()));
+
+        var user = await _context.Users
+            .FirstOrDefaultAsync(u => (u.Email == encodedInput || u.Identification == encodedInput || u.Username == request.EmailOrIdentification) 
+                                    && !u.IsDeleted);
+
+        if (user == null)
+            throw new Exception("No se encontró ningún usuario registrado con la información ingresada.");
+
+        if (user.UserStatusStatusId != "ACT")
+            throw new Exception("El usuario no se encuentra activo en el sistema.");
+
+        // Generar nueva contraseña (la enviada o una temporal por defecto)
+        string newPassword = !string.IsNullOrWhiteSpace(request.NewPassword) 
+            ? request.NewPassword 
+            : $"Via{Random.Shared.Next(100000, 999999)}!";
+
+        // Encriptar nueva contraseña con BCrypt
+        user.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+
+        return new RecoverPasswordResponseDto
+        {
+            Message = "Se ha restablecido la contraseña correctamente.",
+            TemporaryPassword = string.IsNullOrWhiteSpace(request.NewPassword) ? newPassword : null
+        };
+    }
+
     private string DecodeBase64(string base64EncodedData)
     {
         if (string.IsNullOrEmpty(base64EncodedData)) return string.Empty;

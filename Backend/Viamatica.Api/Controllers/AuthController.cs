@@ -28,4 +28,18 @@ public class AuthController : ControllerBase
             return BadRequest(new { message = ex.Message });
         }
     }
+
+    [HttpPost("recover-password")]
+    public async Task<IActionResult> RecoverPassword([FromBody] RecoverPasswordRequestDto request)
+    {
+        try
+        {
+            var result = await _authService.RecoverPasswordAsync(request);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
 }
