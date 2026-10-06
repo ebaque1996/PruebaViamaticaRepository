@@ -64,4 +64,67 @@ public class UserService : IUserService
             ? "Usuario creado exitosamente. Pendiente de aprobación por un Administrador." 
             : "Usuario creado y activado exitosamente.";
     }
+
+    public async Task<IEnumerable<UserDto>> GetAllAsync()
+    {
+        // 1. Traemos de la BD solo los que no están eliminados
+        var users = await _context.Users
+            .Where(u => !u.IsDeleted)
+            .ToListAsync();
+
+        // 2. Mapeamos y desencriptamos en memoria
+        return users.Select(u => new UserDto
+        {
+            UserId = u.UserId,
+            Username = u.Username,
+            Email = DecodeBase64(u.Email),
+            Identification = DecodeBase64(u.Identification),
+            StatusId = u.UserStatusStatusId,
+            RolId = u.RolRolId,
+            CreationDate = u.CreationDate
+        });
+    }
+
+    public async Task<UserDto> GetByIdAsync(int id)
+    {
+        var u = await _context.Users
+            .FirstOrDefaultAsync(u => u.UserId == id && !u.IsDeleted);
+
+        if (u == null)
+            throw new Exception($"El usuario con ID {id} no fue encontrado o fue eliminado.");
+
+        return new UserDto
+        {
+            UserId = u.UserId,
+            Username = u.Username,
+            Email = DecodeBase64(u.Email),
+            Identification = DecodeBase64(u.Identification),
+            StatusId = u.UserStatusStatusId,
+            RolId = u.RolRolId,
+            CreationDate = u.CreationDate
+        };
+    }
+
+    public async Task<bool> DeleteAsync(int id)
+    {
+        var user = await _context.Users.FindAsync(id);
+        
+        if (user == null || user.IsDeleted)
+            return false;
+
+        // Eliminación lógica: Solo cambiamos la bandera
+        user.IsDeleted = true;
+        await _context.SaveChangesAsync();
+        
+        return true;
+    }
+
+    // Método privado auxiliar para desencriptar el Base64
+    private string DecodeBase64(string base64EncodedData)
+    {
+        if (string.IsNullOrEmpty(base64EncodedData)) return string.Empty;
+        
+        var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+        return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+    }
 }

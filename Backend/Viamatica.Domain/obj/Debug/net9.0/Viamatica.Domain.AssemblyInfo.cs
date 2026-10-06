@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Viamatica.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a4472bb84f74a496f6d4058dd6882ad6b630028")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1999eb293f6d1cba8fd1986ff98df67b789bf94a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Viamatica.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Viamatica.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
