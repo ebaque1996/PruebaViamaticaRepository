@@ -17,4 +17,7 @@ public class Contract
 
     public int MethodPaymentMethodPaymentId { get; set; }
     public MethodPayment MethodPayment { get; set; } = null!;
+
+    // Eliminación lógica
+    public bool IsDeleted { get; set; } = false;
 }

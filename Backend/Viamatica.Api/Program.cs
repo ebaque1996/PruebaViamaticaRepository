@@ -20,6 +20,7 @@ builder.Services.AddScoped<IRolService, RolService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<ITurnService, TurnService>();
+builder.Services.AddScoped<IContractService, ContractService>();
 
 var app = builder.Build();
 
