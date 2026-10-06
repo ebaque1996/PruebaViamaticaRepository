@@ -38,8 +38,11 @@ export class Auth {
     );
   }
 
-  recoverPassword(data: RecoverPasswordRequest): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>(`${this.API_URL}/auth/recover-password`, data);
+  recoverPassword(data: RecoverPasswordRequest): Observable<{ message: string; temporaryPassword?: string }> {
+    return this.http.post<{ message: string; temporaryPassword?: string }>(
+      `${this.API_URL}/Auth/recover-password`,
+      data
+    );
   }
 
   logout(): void {
