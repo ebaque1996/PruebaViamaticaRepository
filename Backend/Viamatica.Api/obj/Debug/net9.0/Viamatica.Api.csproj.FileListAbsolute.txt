@@ -172,3 +172,4 @@ C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Api\obj\Debug\net9
 C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Api\bin\Debug\net9.0\AspNetCore.Scalar.dll
 C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Api\bin\Debug\net9.0\Scalar.AspNetCore.dll
 C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Api\bin\Debug\net9.0\BCrypt-Net-Next.dll
+C:\Users\EBAQUE1996\Desktop\PruebaViamatica\Backend\Viamatica.Api\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
