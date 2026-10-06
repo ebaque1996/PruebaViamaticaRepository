@@ -20,7 +20,7 @@ public class CreateUserDto
     public string Identification { get; set; } = null!;
 
     [Required]
-    [EmailAddress]
+    [EmailAddress(ErrorMessage = "Formato de correo inválido.")]
     public string Email { get; set; } = null!;
 
     [Required]

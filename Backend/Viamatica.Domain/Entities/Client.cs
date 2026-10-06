@@ -11,6 +11,9 @@ public class Client
     public string Address { get; set; } = null!;
     public string ReferenceAddress { get; set; } = null!;
 
+    // Eliminación lógica
+    public bool IsDeleted { get; set; } = false;
+
     public ICollection<Contract> Contracts { get; set; } = new List<Contract>();
     public ICollection<Attention> Attentions { get; set; } = new List<Attention>();
     public ICollection<Payment> Payments { get; set; } = new List<Payment>();

@@ -18,6 +18,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<IRolService, RolService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IClientService, ClientService>();
 
 var app = builder.Build();
 
