@@ -26,11 +26,11 @@ public class UsersController : ControllerBase
         try
         {
             // Opción 1: Obtener el rol del usuario autenticado (desde el token)
-            // var creatorRole = User.FindFirstValue(ClaimTypes.Role) ?? "SinRol";
+            var creatorRole = User.FindFirstValue(ClaimTypes.Role) ?? "SinRol";
 
             // Opción 2: Si el rol viene en un header personalizado para pruebas
             //var creatorRole = Request.Headers["X-User-Role"].ToString();
-            var creatorRole = "Administrador"; // Simulación para pruebas, reemplaza con la lógica real
+            //var creatorRole = "Administrador"; // Simulación para pruebas, reemplaza con la lógica real
 
             // Validamos que el DTO sea correcto
             if (!ModelState.IsValid)
