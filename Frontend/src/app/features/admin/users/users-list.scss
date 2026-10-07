@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+.table-responsive {
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.input-group-text, .form-control {
+  &:focus {
+    box-shadow: none;
+    border-color: var(--bs-primary);
+  }
+}
+
+.input-group:focus-within {
+  .input-group-text, .form-control {
+    border-color: var(--bs-primary);
+  }
+}

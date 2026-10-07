@@ -1,1 +1,67 @@
-<p>welcome works!</p>
+<div class="container-fluid py-4">
+  @if (user(); as currentUser) {
+    <!-- Tarjeta de Bienvenida -->
+    <div class="card border-0 shadow-sm welcome-card mb-4">
+      <div class="card-body p-5">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h6 class="text-primary fw-bold text-uppercase tracking-wide mb-2">
+              <i class="bi bi-stars me-1"></i> Sistema de Turnos
+            </h6>
+            <h1 class="display-5 fw-bold text-dark mb-3">
+              {{ greeting }}, {{ currentUser.fullName || currentUser.username }}!
+            </h1>
+            <p class="lead text-muted mb-4">
+              Has iniciado sesión correctamente. Tu rol actual en el sistema es
+              <span class="badge bg-primary fs-6">{{ currentUser.roleName }}</span>.
+            </p>
+            <p class="text-muted">
+              Utiliza el menú lateral para acceder a los módulos y funciones que tienes asignadas.
+            </p>
+          </div>
+          <div class="col-md-4 text-center d-none d-md-block">
+            <!-- Icono decorativo usando Bootstrap Icons -->
+            <i class="bi bi-person-workspace text-primary opacity-50" style="font-size: 8rem;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Información (Opcional, para que no se vea vacía la pantalla) -->
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body p-4">
+            <h5 class="card-title fw-bold">
+              <i class="bi bi-info-circle text-info me-2"></i>Información de tu cuenta
+            </h5>
+            <ul class="list-group list-group-flush mt-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <span class="text-muted">Usuario</span>
+                <span class="fw-medium">{{ currentUser.username }}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <span class="text-muted">Email</span>
+                <span class="fw-medium">{{ currentUser.email }}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                <span class="text-muted">Último acceso</span>
+                <span class="fw-medium">Ahora</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100 bg-primary text-white text-center d-flex justify-content-center align-items-center p-4 alert-card">
+          <div>
+            <i class="bi bi-shield-check display-4 mb-3"></i>
+            <h5 class="fw-bold">Conexión Segura</h5>
+            <p class="mb-0 opacity-75">Tus datos y sesión están protegidos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
