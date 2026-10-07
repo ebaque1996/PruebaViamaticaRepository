@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend-api:
+    build: 
+      context: ./Backend # Cambia por la ruta real de tu backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:8080" # Expone el puerto 8080 del contenedor al puerto 5000 de tu máquina
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=host.docker.internal,1433;Database=ViamaticaDB;User Id=sa;Password=Barcelonasc1*;TrustServerCertificate=True;
+
+  frontend-app:
+    build: 
+      context: ./Frontend # Cambia por la ruta real de tu frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80" # Expone el puerto 80 de Nginx al puerto 4200 de tu máquina
+    depends_on:
+      - backend-api # Asegura que el backend arranque primero
